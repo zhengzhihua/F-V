@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.example.administrator.vaf.R;
 import com.example.administrator.vaf.activity.Main_activity;
 import com.example.administrator.vaf.activity.Regist_activity;
 import com.example.administrator.vaf.database.SqliteDB;
