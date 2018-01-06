@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     state.setText("登录成功！");
 
+
                     Intent intent=new Intent(LoginActivity.this,Main_activity.class);
 //                    intent.putExtra("fff",ghhh);
                     startActivity(intent);
