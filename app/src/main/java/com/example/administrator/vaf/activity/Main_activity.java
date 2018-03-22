@@ -30,8 +30,7 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
     private Fragment3_activity personalfragment;
     private ImageView imageView;
     private FrameLayout mVp;
-    private String username;
-    private String role;
+    private String username,role,phone,qq,name,gender,userid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +42,15 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
 
     }
     protected void getdata() {
-        Intent in = getIntent();
-        Bundle bun = in.getExtras();
-        username = bun.getString("username");
-        role = bun.getString("role");
+        Intent in=getIntent();
+        Bundle bun=in.getExtras();
+        username=bun.getString("username");
+        role=bun.getString("role");
+        userid=bun.getString("userid");
+        phone=bun.getString("phone");
+        qq=bun.getString("qq");
+        name=bun.getString("name");
+        gender=bun.getString("gender");
 
     }
 
@@ -78,8 +82,12 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
             Bundle bund=new Bundle();
             bund.putString("username",username);
             bund.putString("role",role);
+            bund.putString("userid",userid);
+            bund.putString("phone",phone);
+            bund.putString("qq",qq);
+            bund.putString("name",name);
+            bund.putString("gender",gender);
             personalfragment.setArguments(bund);
-
             transaction.add(R.id.mVp,personalfragment);
         }
         hideAllFragment(transaction);   //影藏所有的fragment；

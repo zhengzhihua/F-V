@@ -18,8 +18,13 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
+import com.example.administrator.vaf.api.HttpRequestHandler;
+import com.example.administrator.vaf.api.Httpmanager;
 import com.example.administrator.vaf.database.OpenHelper;
 import com.example.administrator.vaf.database.SqliteDB;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 
 /**
@@ -36,7 +41,7 @@ public class Login_activity extends AppCompatActivity {
     private CheckBox checkbox;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
-
+    private String username,password,role,phone,qq,name,gender,userid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +79,8 @@ public class Login_activity extends AppCompatActivity {
             String username=count.getText().toString().trim();
             String password=pwd.getText().toString().trim();
 
-            String sql="select * from users where username=? and userpwd=?";
+            login();
+          /*  String sql="select * from users where username=? and userpwd=?";
             String[] strings=new String[]{username,password};
             Cursor clogin=sqliteDB.getInstance(Login_activity.this).search(sql,strings);
             if(clogin.moveToFirst()==true){
@@ -102,11 +108,63 @@ public class Login_activity extends AppCompatActivity {
                 Toast.makeText(Login_activity.this,"用户名不能为空或密码不能为空",Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(Login_activity.this,"用户名不存在或密码错误",Toast.LENGTH_SHORT).show();
-            }
+            }*/
 
 
         }
     };
+    private void login() {
+
+        Httpmanager.loginWithUsername(Login_activity.this,username,password, new HttpRequestHandler<String>() {
+            @Override
+            public void onSuccess(String data) {
+
+            }
+
+            @Override
+            public void onSuccesss(ArrayList<Map<String, Object>> res) {
+
+
+                if(res!=null&& !res.equals("")){
+                    ArrayList<Map<String, Object>> map=new ArrayList<Map<String,Object>>();
+                    map =  res;
+                    role= (String) map.get(0).get("role");
+                    phone= (String) map.get(0).get("phone");
+                    qq= (String) map.get(0).get("qq");
+                    name= (String) map.get(0).get("name");
+                    gender= (String) map.get(0).get("gender");
+                    userid= (String) map.get(0).get("userid");
+                    username= (String) map.get(0).get("username");
+
+                    Bundle bundle=new Bundle();
+                    bundle.putString("username",username);
+                    bundle.putString("role",role);
+                    bundle.putString("phone",phone);
+                    bundle.putString("qq",qq);
+                    bundle.putString("name",name);
+                    bundle.putString("gender",gender);
+                    bundle.putString("userid",userid);
+                    Intent intent=new Intent(Login_activity.this,Main_activity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onSuccess(String data, int totalPages, int currentPage) {
+                if (data != null && !data.equals("")) {
+                    Intent intent = new Intent(Login_activity.this, Main_activity.class);
+                    startActivityForResult(intent, 0);
+
+                }
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Toast.makeText(Login_activity.this, error, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
     View.OnClickListener reglisten=new View.OnClickListener() {
         @Override
         public void onClick(View v) {

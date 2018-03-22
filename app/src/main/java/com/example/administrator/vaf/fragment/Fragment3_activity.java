@@ -31,14 +31,18 @@ public class Fragment3_activity extends Fragment {
     private ImageView address;               //地址
     private ImageView write_information;     //完善信息
     private Button Exit_logon;               //退出登录
-    private String username;
-    private String role;
+    private String username,role,phone,qq,name,gender,userid;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bun=getArguments();
         username=bun.getString("username");
         role=bun.getString("role");
+        userid=bun.getString("userid");
+        phone=bun.getString("phone");
+        qq=bun.getString("qq");
+        name=bun.getString("name");
+        gender=bun.getString("gender");
 
     }
 
@@ -82,7 +86,18 @@ public class Fragment3_activity extends Fragment {
     View.OnClickListener write_informationlistener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            Intent intent=new Intent();
+            intent.setClass(getActivity(),Userdetail_activity.class);
+            Bundle bumdle=new Bundle();
+            bumdle.putString("username",username);
+            bumdle.putString("role",role);
+            bumdle.putString("phone",phone);
+            bumdle.putString("qq",qq);
+            bumdle.putString("name",name);
+            bumdle.putString("gender",gender);
+            bumdle.putString("userid",userid);
+            intent.putExtras(bumdle);
+            startActivity(intent);
         }
     };
 
@@ -108,7 +123,11 @@ public class Fragment3_activity extends Fragment {
             Bundle bumdle=new Bundle();
             bumdle.putString("username",username);
             bumdle.putString("role",role);
-           intent.putExtras(bumdle);
+            bumdle.putString("phone",phone);
+            bumdle.putString("qq",qq);
+            bumdle.putString("name",name);
+            bumdle.putString("gender",gender);
+            intent.putExtras(bumdle);
             startActivity(intent);
         }
     };

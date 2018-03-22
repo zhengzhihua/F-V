@@ -16,4 +16,5 @@
     <dimen name="padding_10dp">10dp</dimen>
     <dimen name="marginTop_20dp">20dp</dimen>
     <dimen name="word_size">20dp</dimen>
+    <dimen name="wordsize_20dp">20dp</dimen>
 </resources>
