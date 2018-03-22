@@ -3,4 +3,180 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <LinearLayout
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/hand"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="@dimen/marginTop_15dp"
+            android:background="@drawable/head"/>
+        <TextView
+            android:id="@+id/users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:hint="用户名"
+            android:textSize="30dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/backgroundline"
+        >
+
+    </View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Full_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="全部订单"
+            android:textSize="@dimen/Wordsize_24dp"
+            android:padding="@dimen/padding_10dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/Transaction_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="交易订单"
+            android:textSize="@dimen/Wordsize_24dp"
+            android:padding="@dimen/padding_10dp"
+            android:layout_weight="1"
+             />
+
+        <TextView
+            android:id="@+id/evaluated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="待评价"
+            android:textSize="@dimen/Wordsize_24dp"
+            android:padding="@dimen/padding_10dp"
+            android:layout_weight="1"
+             />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/backgroundline"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="@dimen/marginLeft_80dp"
+                android:layout_height="wrap_content"
+                android:text="余额 "
+                android:textSize="@dimen/Wordsize_24dp"
+                android:padding="5dp"
+                android:id="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_marginLeft="@dimen/padding_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/backgroundline"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="地址"
+                android:textSize="24dp"
+                android:padding="5dp"/>
+            <ImageView
+                android:id="@+id/address"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/rightimage"
+                />
+
+
+    </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/backgroundline"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完善用户信息"
+                android:textSize="24dp"
+                android:padding="5dp"/>
+            <ImageView
+                android:id="@+id/write_information"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/rightimage"/>
+
+
+    </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Exit_logon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_10dp"
+            android:text="退出登录"
+            android:textSize="@dimen/Wordsize_24dp"
+            android:textColor="@color/wordblack"
+            />
+    </LinearLayout>
+
 </LinearLayout>

@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp">
 
         <LinearLayout
@@ -22,10 +21,10 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
                 android:gravity="center"
-                android:src="@mipmap/logtop" />
+                android:src="@mipmap/shop" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,8 +37,8 @@
                 <EditText
                     android:id="@+id/count"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="@dimen/registinput"
+                    android:layout_marginRight="@dimen/marginRight_5dp"
                     android:background="@drawable/edit_text_bg"
                     android:drawableLeft="@mipmap/user_name"
                     android:drawablePadding="5dp"
@@ -54,8 +53,8 @@
                 <EditText
                     android:id="@+id/pwd"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="@dimen/registinput"
+                    android:layout_marginTop="@dimen/marginTop_20dp"
                     android:background="@drawable/edit_text_bg"
                     android:drawableLeft="@mipmap/pass_word"
                     android:drawablePadding="5dp"
@@ -74,7 +73,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/marginTop_20dp"
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -82,11 +81,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/checkbox"
-                    android:layout_marginLeft="10dp"
                     android:padding="5dp"
                     android:text="记住密码"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
 
             </RelativeLayout>
@@ -94,9 +95,9 @@
             <Button
                 android:id="@+id/login"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/loginbutton_200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/marginTop_20dp"
                 android:background="@drawable/button_selector"
                 android:text="登录"
                 android:textColor="#000000"
@@ -106,7 +107,7 @@
                 android:id="@+id/regin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/height_40dp"
                 android:orientation="horizontal">
                 <TextView
 
@@ -121,21 +122,6 @@
             </RelativeLayout>
 
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="状态"/>
-        <TextView
-            android:id="@+id/state"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-
     </LinearLayout>
 
 

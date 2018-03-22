@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/backgroud">
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/marginTop_80dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
@@ -22,19 +22,19 @@
                 android:layout_height="wrap_content"
                 android:text="手机号"
                 android:gravity="center"
-                android:textSize="25dp" />
+                android:textSize="@dimen/registword" />
 
             <EditText
                 android:id="@+id/count"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/registinput"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/edit_text_bg"
                 android:hint=""
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="@dimen/registword" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,19 +48,19 @@
                 android:layout_height="wrap_content"
                 android:text="用户名"
                 android:gravity="center"
-                android:textSize="25dp" />
+                android:textSize="@dimen/registword" />
 
             <EditText
-
+                android:id="@+id/username"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/registinput"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/edit_text_bg"
                 android:hint=""
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="@dimen/registword" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,19 +74,19 @@
                 android:layout_height="wrap_content"
                 android:text="密 码"
                 android:gravity="center"
-                android:textSize="25dp" />
+                android:textSize="@dimen/registword" />
 
             <EditText
-
+                android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/registinput"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/edit_text_bg"
                 android:hint=""
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="@dimen/registword" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -100,12 +100,12 @@
                 android:text="确认密码"
                 android:gravity="center"
 
-                android:textSize="25dp" />
+                android:textSize="@dimen/registword" />
 
             <EditText
-
+                android:id="@+id/twopsw"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/registinput"
                 android:layout_marginRight="15dp"
 
                 android:background="@drawable/edit_text_bg"
@@ -113,33 +113,37 @@
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="@dimen/registword" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/regist_box_margin"
+            android:layout_marginTop="@dimen/height_40dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="角 色"
-                android:gravity="center"
-                android:textSize="25dp" />
-
-            <EditText
-
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/edit_text_bg"
-                android:hint="'商家'或者'用户'"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/userbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginLeft_80dp"
+                    android:text="用户"
+                    android:textSize="@dimen/registword"/>
+                <RadioButton
+                    android:id="@+id/sellerbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginLeft_20dp"
+                    android:text="商家"
+                    android:textSize="@dimen/registword"/>
+
+            </RadioGroup>
+
         </LinearLayout>
 
 
@@ -148,10 +152,11 @@
     <Button
         android:id="@+id/login"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_selector"
+        android:layout_gravity="center_horizontal"
         android:text="注册"
         android:textColor="#000000"
         android:textSize="18sp" />

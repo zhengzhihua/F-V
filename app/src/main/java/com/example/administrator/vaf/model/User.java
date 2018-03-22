@@ -5,7 +5,12 @@ package com.example.administrator.vaf.model;
  */
 public class User {
 
-    private int id;
+    private int id;  //用户id
+    private String username;  //用户名
+    private String userpwd;  //用户登录密码
+    private String phone;  //用户手机号
+
+
     public int getId() {
         return id;
     }
@@ -32,7 +37,12 @@ public class User {
         this.userpwd = userpwd;
     }
 
-    private String username;
-    private String userpwd;
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

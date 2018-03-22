@@ -10,6 +10,7 @@ import com.example.administrator.vaf.model.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/12/19.
@@ -19,7 +20,7 @@ public class SqliteDB {
     /**
      * 数据库名
      */
-    public static final String DB_NAME = "sqlite_dbname";
+    public static final String DB_NAME = "Fruits.db";
     /**
      * 数据库版本
      */
@@ -45,15 +46,42 @@ public class SqliteDB {
         return sqliteDB;
     }
 
-    /**
+    public void insert(String sql,String[] string){
+        try {
+            db.execSQL(sql, string);
+        }catch(Exception e){
+            Log.d("错误",e.getMessage().toString());
+        }
+
+    }
+    public Cursor search(String sql,String[] string){
+        Cursor cursor=null;
+        try {
+             cursor = db.rawQuery(sql, string);
+            return cursor;
+        }catch(Exception e){
+            Log.d("错误",e.getMessage().toString());
+        }
+       return cursor;
+    }
+    public void delete(String sql,String[] string){
+        db.execSQL(sql,string);
+    }
+
+    public void updata(String sql,String[] string){
+        db.execSQL(sql,string);
+    }
+
+   /* *//**
      * 将User实例存储到数据库。
-     */
+     *//*
+
     public int  saveUser(User user) {
         if (user != null) {
-           /* ContentValues values = new ContentValues();
+           *//* ContentValues values = new ContentValues();
             values.put("username", user.getUsername());
             values.put("userpwd", user.getUserpwd());
-            db.insert("User", null, values);*/
+            db.insert("User", null, values);*//*
 
             Cursor cursor = db.rawQuery("select * from User where username=?", new String[]{user.getUsername().toString()});
             if (cursor.getCount() > 0) {
@@ -72,9 +100,9 @@ public class SqliteDB {
         }
     }
 
-    /**
+    *//**
      * 从数据库读取User信息。
-     */
+     *//*
     public List<User> loadUser() {
         List<User> list = new ArrayList<User>();
         Cursor cursor = db
@@ -118,5 +146,5 @@ public class SqliteDB {
         }
 
 
-    }
+    }*/
 }

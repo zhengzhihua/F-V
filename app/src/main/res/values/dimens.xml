@@ -2,5 +2,18 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="regist_box_margin">5dp</dimen>
+    <dimen name="regist_box_margin">15dp</dimen>
+    <dimen name="registword">20dp</dimen>
+    <dimen name="registinput">45dp</dimen>
+    <dimen name="height_40dp">40dp</dimen>
+    <dimen name="marginLeft_80dp">80dp</dimen>
+    <dimen name="marginLeft_20dp">20dp</dimen>
+    <dimen name="marginTop_80dp">80dp</dimen>
+    <dimen name="loginbutton_200dp">200dp</dimen>
+    <dimen name="marginRight_5dp">5dp</dimen>
+    <dimen name="marginTop_15dp">15dp</dimen>
+    <dimen name="Wordsize_24dp">24dp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="marginTop_20dp">20dp</dimen>
+    <dimen name="word_size">20dp</dimen>
 </resources>
