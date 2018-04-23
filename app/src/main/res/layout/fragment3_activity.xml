@@ -24,6 +24,7 @@
             android:layout_gravity="center_vertical"
             android:paddingLeft="30dp"
             android:hint="用户名"
+            android:textColor="@color/wordcolor"
             android:textSize="30dp"/>
 
     </LinearLayout>
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="全部订单"
+            android:textColor="@color/wordcolor"
             android:textSize="@dimen/Wordsize_24dp"
             android:padding="@dimen/padding_10dp"
             android:layout_weight="1"/>
@@ -56,6 +58,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="交易订单"
+            android:textColor="@color/wordcolor"
             android:textSize="@dimen/Wordsize_24dp"
             android:padding="@dimen/padding_10dp"
             android:layout_weight="1"
@@ -67,6 +70,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="待评价"
+            android:textColor="@color/wordcolor"
             android:textSize="@dimen/Wordsize_24dp"
             android:padding="@dimen/padding_10dp"
             android:layout_weight="1"
@@ -85,21 +89,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="@dimen/marginLeft_80dp"
                 android:layout_height="wrap_content"
                 android:text="余额 "
+                android:textColor="@color/wordcolor"
                 android:textSize="@dimen/Wordsize_24dp"
+                android:layout_alignParentLeft="true"
                 android:padding="5dp"
                 android:id="@+id/textView3" />
 
             <TextView
                 android:id="@+id/balance"
                 android:layout_marginLeft="@dimen/padding_10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/wordcolor"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
     <View
@@ -122,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="地址"
+                android:textColor="@color/wordcolor"
                 android:textSize="24dp"
                 android:padding="5dp"/>
             <ImageView
@@ -143,26 +157,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="完善用户信息"
-                android:textSize="24dp"
-                android:padding="5dp"/>
-            <ImageView
-                android:id="@+id/write_information"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/rightimage"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="完善用户信息"
+                    android:textSize="24dp"
+                    android:textColor="@color/wordcolor"
+                    android:padding="5dp"/>
+                <ImageView
+                    android:id="@+id/write_information"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/rightimage"/>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

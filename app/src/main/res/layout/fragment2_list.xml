@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_container6"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="#ffffff"
+    android:foreground="?android:selectableItemBackground"
+    android:orientation="horizontal"
+    card_view:cardCornerRadius="2dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/images6"
+                android:layout_width="90dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="90dp"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+
+                <TextView
+                    android:layout_width="@dimen/shoplist_width"
+                    android:layout_height="wrap_content"
+                    android:text="商品"
+                    android:gravity="center"
+                    android:textColor="@color/wordcolor"
+                    android:textSize="@dimen/dealword"
+                    android:padding="2dp"/>
+                <TextView
+                    android:id="@+id/shops6"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/wordcolor"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/dealword"
+                    android:padding="2dp"/>
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+
+                        <TextView
+                            android:layout_width="@dimen/shoplist_width"
+                            android:layout_height="wrap_content"
+                            android:text="商家"
+                            android:gravity="center"
+                            android:textColor="@color/wordcolor"
+                            android:padding="2dp"
+                            android:textSize="@dimen/dealword"/>
+                        <TextView
+                            android:id="@+id/business6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/wordcolor"
+                            android:gravity="center_vertical"
+                            android:padding="2dp"
+                            android:textSize="@dimen/dealword"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+                        <TextView
+                            android:layout_width="@dimen/shoplist_width"
+                            android:layout_height="wrap_content"
+                            android:text="价格"
+                            android:gravity="center"
+                            android:textColor="@color/wordcolor"
+                            android:textSize="@dimen/dealword"
+                            android:padding="2dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/prices6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/wordcolor"
+                            android:textSize="@dimen/dealword"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+               <ImageView
+                   android:id="@+id/deleteimage6"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_alignParentRight="true"
+                   android:layout_marginRight="20dp"
+                   android:src="@drawable/deletes"
+                   />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

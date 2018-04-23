@@ -17,4 +17,7 @@
     <dimen name="marginTop_20dp">20dp</dimen>
     <dimen name="word_size">20dp</dimen>
     <dimen name="wordsize_20dp">20dp</dimen>
+    <dimen name="shoplistword_text">20dp</dimen>
+    <dimen name="shoplist_width">60dp</dimen>
+    <dimen name="dealword">18dp</dimen>
 </resources>

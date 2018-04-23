@@ -19,11 +19,30 @@
 
         </RelativeLayout>
 
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收货地址"
+            android:textSize="25dp"
+            android:padding="10dp"
+            android:textColor="@color/wordcolor"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/backgroundline"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="3"
+            android:textColor="@color/wordcolor"
+            android:textSize="18dp"
+            android:hint="地址输入栏"
+            android:lineSpacingExtra="2dp"/>
     </LinearLayout>
 </LinearLayout>

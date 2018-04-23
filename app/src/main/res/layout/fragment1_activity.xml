@@ -8,30 +8,56 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:orientation="horizontal">
-    <RelativeLayout
+     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:padding="5dp"
-        android:orientation="horizontal">
-
-        <EditText
+        >
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:padding="10dp"
-            android:background="@drawable/edit_text_bg"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:background="#ffffff"
-            android:layout_alignParentRight="true"
-            android:text="搜索"
-            android:padding="2dp"
-            android:textSize="24dp"
-            android:gravity="center_vertical" />
 
-    </RelativeLayout>
+            >
+            <EditText
+                android:id="@+id/write_explore"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:padding="5dp"
+                android:hint="请输入搜索信息"
+                android:layout_weight="4"
+                android:background="@drawable/edit_text_bg"/>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryDark"/>
+
+
+            <ImageView
+                android:id="@+id/explore_button"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:paddingRight="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/explore" />
+
+        </LinearLayout>
+     </RelativeLayout>
     </LinearLayout>
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleview1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+
+            </android.support.v7.widget.RecyclerView>
+
+
 
 </LinearLayout>

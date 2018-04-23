@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.vaf" >
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -19,6 +21,14 @@
         <activity android:name=".activity.Userdetail_activity"/>
         <activity android:name=".activity.Main_activity"/>
         <activity android:name=".activity.Regist_activity" />
+        <activity android:name=".activity.Perfectuser_activity" />
+        <activity android:name=".activity.Addshopdetail_activity" />
+        <activity android:name=".activity.Address_activity" />
+        <activity android:name=".activity.Allorderform_activity" />
+        <activity android:name=".activity.Beforecriticism_activity" />
+        <activity android:name=".activity.Criticism_detail" />
+        <activity android:name=".activity.Dealorderform_activity" />
+        <activity android:name=".activity.Shopdetail_activity" />
     </application>
 
 </manifest>

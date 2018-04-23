@@ -4,17 +4,21 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.PersistableBundle;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
 import com.example.administrator.vaf.api.HttpRequestHandler;
@@ -52,16 +56,22 @@ public class Addshopdetail_activity extends AppCompatActivity{
     String userid,username,shopid,shopname,shopdescribe,price,type,produceplace,images;
 
 
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addshopdetail_activity);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        builder.detectFileUriExposure();
+
         Intent in=getIntent();
         Bundle bun=in.getExtras();
         userid=bun.getString("userid");
         username=bun.getString("username");
         initview();
-        getdata();
+
     }
 
     private void getdata() {
@@ -96,11 +106,13 @@ public class Addshopdetail_activity extends AppCompatActivity{
     View.OnClickListener buttoncommit1listener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            getdata();
             String word="(userid,username,shopid,shopname,shopdescribe,price,type,produceplace,image)";
-            String value="('"+userid+"','"+username+"','"+shopid+"','"+shopname+"',','"+shopdescribe+"'"+price+"','"+type+"','"+produceplace+"','"+images+"')";
+            String value="('"+userid+"','"+username+"','"+shopid+"','"+shopname+"','"+shopdescribe+"','"+price+"','"+type+"','"+produceplace+"','"+images+"')";
             Httpmanager.insertdata(Addshopdetail_activity.this,shopname,username,"commodity_bank",word,value, new HttpRequestHandler<String>() {
                 @Override
                 public void onSuccess(String data) {
+                    Toast.makeText(Addshopdetail_activity.this,"添加成功",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -119,6 +131,9 @@ public class Addshopdetail_activity extends AppCompatActivity{
 
                 }
             });
+            Intent intent=new Intent(Addshopdetail_activity.this,Main_activity.class);
+            intent.putExtra("id","1");
+            startActivity(intent);
         }
     };
     View.OnClickListener makeimagelistener=new View.OnClickListener() {

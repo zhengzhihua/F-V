@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="添加"
+            android:visibility="gone"
             android:textSize="@dimen/word_size"/>
         <Button
             android:id="@+id/deletebutton"
@@ -29,5 +30,14 @@
 
     </RelativeLayout>
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleviews2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        >
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

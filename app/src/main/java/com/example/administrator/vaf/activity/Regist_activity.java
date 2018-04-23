@@ -40,7 +40,7 @@ public class Regist_activity extends AppCompatActivity {
     private RadioButton userbutton;
     private RadioButton sellerbutton;
     private Button registbutton;
-    private String role, userid,phone,password,username,twopsw,word,value;
+    private String role, userid,phone,password,username,twopsw;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,10 +66,10 @@ public class Regist_activity extends AppCompatActivity {
     View.OnClickListener registbuttonlisten=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String phone=counttext.getText().toString().trim();
-            String password=passwordtext.getText().toString().trim();
-            String username=usernametext.getText().toString().trim();
-            String twopsw=twopswtext.getText().toString().trim();
+             phone=counttext.getText().toString().trim();
+             password=passwordtext.getText().toString().trim();
+             username=usernametext.getText().toString().trim();
+             twopsw=twopswtext.getText().toString().trim();
             if(userbutton.isChecked()){
                 role="1";
             }
@@ -91,8 +91,8 @@ public class Regist_activity extends AppCompatActivity {
                 Toast.makeText(Regist_activity.this,"两次输入的密码不一致",Toast.LENGTH_LONG).show();
             }else
 
-            if(!phone.equals("") && !username.equals("") && !"".equals(password) && !"".equals(twopsw) && !"".equals(role)) {
-                String userid = UUIDGenerator.getUUID();
+            if( !"".equals(role)&&!phone.equals("") && !username.equals("") && !"".equals(password) && !"".equals(twopsw) ) {
+                 userid = UUIDGenerator.getUUID();
                /* String sql="INSERT INTO users(userid,username,userpwd,phone,role) values(?,?,?,?,?)";
                 String[] string=new String[]{userid,username,password,phone,role};
                *//* db.execSQL("insert into User(userid,username,userpwd,phone,role) values(?,?,?,?,?) ", new String[]{userid,username,password,phone,role});*//*
@@ -129,11 +129,14 @@ public class Regist_activity extends AppCompatActivity {
             }).start();*/
                 regist();
             }
+            else {
+                Toast.makeText(Regist_activity.this, "存在输入为空或未选择", Toast.LENGTH_LONG).show();
+            }
         }
     };
     private void regist() {
-        word="(userid,username,phone,role,password)";
-        value="('"+userid+"','"+username+"','"+phone+"','"+role+"','"+password+"')";
+       String word="(userid,username,phone,role,password)";
+       String value="('"+userid+"','"+username+"','"+phone+"','"+role+"','"+password+"')";
         Httpmanager.userregist(Regist_activity.this, "user", username, phone, word, value, new HttpRequestHandler<String>() {
             @Override
             public void onSuccess(String data) {

@@ -32,7 +32,7 @@ import java.util.Map;
  */
 
 public class Login_activity extends AppCompatActivity {
-
+    private static final String TAG = "Login_activity";
     private static SqliteDB sqliteDB;
     private RelativeLayout reg;
     private Button login;
@@ -76,8 +76,8 @@ public class Login_activity extends AppCompatActivity {
     View.OnClickListener loginlisten=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String username=count.getText().toString().trim();
-            String password=pwd.getText().toString().trim();
+             username=count.getText().toString().trim();
+             password=pwd.getText().toString().trim();
 
             login();
           /*  String sql="select * from users where username=? and userpwd=?";
@@ -126,6 +126,16 @@ public class Login_activity extends AppCompatActivity {
 
 
                 if(res!=null&& !res.equals("")){
+                    editor=pref.edit();
+                    if(checkbox.isChecked()){       //检查复选框是否被选中
+                        editor.putBoolean("remember_password",true);
+                        editor.putString("username",username);
+                        editor.putString("password",password);
+
+                    }else{
+                        editor.clear();
+                    }
+                    editor.apply();
                     ArrayList<Map<String, Object>> map=new ArrayList<Map<String,Object>>();
                     map =  res;
                     role= (String) map.get(0).get("role");

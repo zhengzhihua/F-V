@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+     <EditText
+         android:id="@+id/criticism1"
+         android:layout_width="match_parent"
+         android:layout_height="100dp"
+         android:lines="5"
+         android:textColor="@color/wordcolor"
+         android:textSize="@dimen/wordsize_20dp"
+         android:hint="请输入评论"
+         />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginTop_20dp"
+        android:layout_gravity="center_horizontal">
+    <Button
+        android:id="@+id/criticismbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/Wordsize_24dp"
+        android:textColor="@color/wordcolor"
+        android:text="提交"
+        android:background="@color/colorforbackword"
+        />
+    </LinearLayout>
+</LinearLayout>

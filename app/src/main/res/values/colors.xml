@@ -8,4 +8,9 @@
     <color name="backgroundline">#e1e0e0</color>
     <color name="wordblack">#000000</color>
     <color name="wordcolor">#000000</color>
+    <color name="colorforbackword">#3F51B5</color>
+    <color name="progress1">#f1f574</color>
+    <color name="progress2">#b0f26d</color>
+    <color name="holo_blue_light">#ff33b5e5</color>
+    <color name="holo_red_light">#ffff4444</color>
 </resources>

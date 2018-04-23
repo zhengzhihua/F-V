@@ -10,6 +10,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,11 +22,12 @@ import cz.msebera.android.httpclient.Header;
 
  public class Httpmanager {
     private static final String TAG = "Httpmanager";
-    private static String uri="http://10.3.104.158:8081/excelservice/rest/service";
+    private static String uri="http://10.3.105.29:8080/excelservice/rest/service";
+ //   private static String uri="http://192.168.42.90:8080/excelservice/rest/service";
 
 
     /*
-    ************登录
+    ************登录********************
     */
     public static void loginWithUsername(final Context cxt, final String username, final String password, final HttpRequestHandler<String> handler
                                         ) {
@@ -70,7 +72,7 @@ import cz.msebera.android.httpclient.Header;
     }
 
    /*
-   *********注册
+   ******************注册************************
    * */
     public static void userregist(final Context cxt,final String tablename,final String username,final String phone,
                                  final String word,final String value,final HttpRequestHandler<String> handler){
@@ -115,7 +117,259 @@ import cz.msebera.android.httpclient.Header;
 
 
     }
+  /*
+   ****************查询借口***************
+   */
+    public static void selectdata(final Context cxt,final String tablename,
+                                  final String word,final String where,final HttpRequestHandler<String> handler){
 
+        Map map=new HashMap();
+        map.put("tablename",tablename);
+        map.put("word",word);
+        map.put("where",where);
+        String data= JSON.toJSONString(map);
+        String ip_dress=uri+"/select1";
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.put("data",data);
+        client.post(ip_dress,params, new TextHttpResponseHandler(){
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+
+                Log.i(TAG,responseString);//------------------------------------------------------------------
+                if(statusCode==200){
+                    ReSult1 loginResult= JsonUtil.parsingAuth(cxt,responseString);
+        //            LoginResult loginResult= JsonUtil.parsingAuth1(cxt,responseString);
+                    if(loginResult !=null){
+                        if(loginResult.getMessage().equals("登录成功")||loginResult.getSuccess().equals("true")){
+                            SafeHandler.onSuccesss(handler,loginResult.getArraylist() );
+                        }else if(loginResult.getSuccess().equals("false")){
+                            SafeHandler.onFailure(handler,loginResult.getMessage());
+
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+    /*
+  ****************查询借口***************
+  */
+    public static void selectdata1(final Context cxt,final String tablename,
+                                  final String word,final String where,final HttpRequestHandler<String> handler){
+
+        Map map=new HashMap();
+        map.put("tablename",tablename);
+        map.put("word",word);
+        map.put("where",where);
+        String data= JSON.toJSONString(map);
+        String ip_dress=uri+"/select";
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.put("data",data);
+        client.post(ip_dress,params, new TextHttpResponseHandler(){
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+
+                Log.i(TAG,responseString);//------------------------------------------------------------------
+                if(statusCode==200){
+                    ReSult1 loginResult= JsonUtil.parsingAuth(cxt,responseString);
+                    if(loginResult !=null){
+                        if(loginResult.getMessage().equals("成功")||loginResult.getSuccess().equals("true")){
+                            SafeHandler.onSuccesss(handler, loginResult.getArraylist());
+                        }else if(loginResult.getSuccess().equals("false")){
+                            SafeHandler.onFailure(handler,loginResult.getMessage());
+
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    /*
+    *************************跟新接口*************************
+    * */
+    public static void updata(final Context cxt,final String tablename,
+
+                              final String set,final String where,final HttpRequestHandler<String>handler){
+
+        Map map=new HashMap();
+        map.put("tablename",tablename);
+        map.put("set",set);
+        map.put("where",where);
+        String data=JSON.toJSONString(map);
+        String ip_dress=uri+"/updata";
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.put("data",data);
+        client.post(ip_dress, params, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.i(TAG,responseString);//------------------------------------------------------------------
+                if(statusCode==200){
+                    LoginResult loginResult= JsonUtil.parsingAuthStr(cxt,responseString);
+                    if(loginResult!=null&& ! loginResult.equals("")){
+                        if(loginResult.getSuccess().equals("true")){
+                            SafeHandler.onSuccess(handler,loginResult.getMessage());
+
+                        }else if(loginResult.getSuccess().equals("false")){
+                            SafeHandler.onFailure(handler,loginResult.getMessage());
+
+                        }
+
+                    }
+
+                }
+            }
+        });
+
+    }
+   /*
+   ******************************删除*****************************************
+   * */
+    public static void delete(final Context cxt,
+                              final String tablename,final String where,final HttpRequestHandler<String>handler){
+        Map map=new HashMap();
+        map.put("tablename",tablename);
+        map.put("where",where);
+        String data=JSON.toJSONString(map);
+        String ip_dress=uri+"/delete";
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.put("data",data);
+        client.post(ip_dress, params, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.i(TAG,responseString);//------------------------------------------------------------------
+                if(statusCode==200){
+                    LoginResult loginResult= JsonUtil.parsingAuthStr(cxt,responseString);
+                    if(loginResult!=null&& ! loginResult.equals("")){
+                        if(loginResult.getSuccess().equals("true")){
+                            SafeHandler.onSuccess(handler,loginResult.getMessage());
+
+                        }else if(loginResult.getSuccess().equals("false")){
+                            SafeHandler.onFailure(handler,loginResult.getMessage());
+
+                        }
+
+                    }
+
+                }
+            }
+        });
+
+    }
+
+    /*
+    ---------------------------------新增---------------------------
+    */
+public static void insertdata(final Context cxt,final String oneword,final String secondword,final String tablename,
+                              final String word,final String value,final HttpRequestHandler<String> handler){
+    Map map=new HashMap();
+    map.put("oneword",oneword);
+    map.put("secondword",secondword);
+    map.put("tablename",tablename);
+    map.put("word",word);
+    map.put("value",value);
+    String data=JSON.toJSONString(map);
+    String ip_dress=uri+"/insert";
+    AsyncHttpClient client=new AsyncHttpClient();
+    RequestParams params=new RequestParams();
+    params.put("data",data);
+
+    client.post(ip_dress, params, new TextHttpResponseHandler() {
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+        }
+
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, String responseString) {
+              if(statusCode==200){
+                  LoginResult loginResult= JsonUtil.parsingAuthStr(cxt,responseString);
+                  if(loginResult!=null&& ! loginResult.equals("")){
+                      if(loginResult.getSuccess().equals("true")){
+                          SafeHandler.onSuccess(handler,loginResult.getMessage());
+
+                      }else if(loginResult.getSuccess().equals("false")){
+                          SafeHandler.onFailure(handler,loginResult.getMessage());
+
+                      }
+
+                  }
+
+              }
+        }
+    });
+}
+    //=============================购物========================
+    public static void insertdata1(final Context cxt,final String oneword,final String secondword,final String price,final String tablename,
+                                  final String word,final String value,final HttpRequestHandler<String> handler){
+        Map map=new HashMap();
+        map.put("userid",oneword);
+        map.put("clientid",secondword);
+        map.put("price",price);
+        map.put("tablename",tablename);
+        map.put("word",word);
+        map.put("value",value);
+        String data=JSON.toJSONString(map);
+        String ip_dress=uri+"/insert1";
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.put("data",data);
+
+        client.post(ip_dress, params, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                if(statusCode==200){
+                    LoginResult loginResult= JsonUtil.parsingAuthStr(cxt,responseString);
+                    if(loginResult!=null&& ! loginResult.equals("")){
+                        if(loginResult.getSuccess().equals("true")){
+                            SafeHandler.onSuccess(handler,loginResult.getMessage());
+
+                        }else if(loginResult.getSuccess().equals("false")){
+                            SafeHandler.onFailure(handler,loginResult.getMessage());
+
+                        }
+
+                    }
+
+                }
+            }
+        });
+    }
 
     /* public final static String  url="http://10.3.104.158:18080/zzh-project/ws/CommonService";
     public final static String namespace="http://CommonService.com/";

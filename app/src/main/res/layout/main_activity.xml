@@ -11,6 +11,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_above="@+id/linearLayout">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+
             android:orientation="horizontal"
             android:background="@color/bottommenu"
             android:id="@+id/linearLayout">
@@ -40,12 +42,13 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/homeimage"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerInParent="true"
                     android:button="@null"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/select1_demo"
+                    android:src="@drawable/homeone"
                     android:padding="@dimen/padding_10dp"
                     android:text="@string/homepage"
                     android:gravity="center_horizontal"/>
@@ -75,6 +78,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/personimage"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerInParent="true"
