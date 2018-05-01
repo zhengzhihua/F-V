@@ -43,13 +43,13 @@
 
                 <ImageView
                     android:id="@+id/homeimage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerInParent="true"
                     android:button="@null"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/homeone"
-                    android:padding="@dimen/padding_10dp"
+                    android:padding="@dimen/padding_5dp"
                     android:text="@string/homepage"
                     android:gravity="center_horizontal"/>
             </LinearLayout>
@@ -62,9 +62,9 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/changeimage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:padding="@dimen/padding_10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="@dimen/padding_5dp"
                     android:src="@drawable/select2_demo"
                     android:layout_gravity="center_horizontal"/>
 
@@ -79,11 +79,11 @@
                 android:orientation="vertical">
                 <ImageView
                     android:id="@+id/personimage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerInParent="true"
                     android:button="@null"
-                    android:padding="@dimen/padding_10dp"
+                    android:padding="@dimen/padding_5dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/select3_demo"
                     android:text="@string/homepage"

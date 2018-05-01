@@ -41,7 +41,15 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
         Intent intents=getIntent();
 
         getdata();
+
         findViewById();
+        if(role.equals("2")){
+            imageView.setImageResource(R.drawable.addition);
+        }else if(role.equals("1")){
+            imageView.setImageResource(R.drawable.shoppingcarone);
+        }
+
+
        /* id=intents.getStringExtra("id");
         if(id.equals("1")){
             initfragment3();
@@ -139,9 +147,10 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
         personal= (LinearLayout) findViewById(R.id.personal);
         mVp= (FrameLayout) findViewById(R.id.mVp);
         imageView= (ImageView) findViewById(R.id.changeimage);
-        if(role.equals("2")){
+       /* if(role.equals("2")){
             imageView.setImageResource(R.drawable.addition);
         }
+        imageView.setImageResource(R.drawable.shoppingcarone);*/
         homeimage= (ImageView) findViewById(R.id.homeimage);
         personimage= (ImageView) findViewById(R.id.personimage);
         homepage.setOnClickListener(this);
@@ -188,8 +197,10 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
       homeimage.setImageResource(R.drawable.homeone);
       if(role.equals("2")){
           imageView.setImageResource(R.drawable.addition);
+      }else if(role.equals("1")){
+          imageView.setImageResource(R.drawable.shoppingcarone);
       }
-      imageView.setImageResource(R.drawable.shoppingcarone);
+
       personimage.setImageResource(R.drawable.myone);
   }
     private void fragments(){

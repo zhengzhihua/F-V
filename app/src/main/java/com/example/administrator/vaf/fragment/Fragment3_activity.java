@@ -80,6 +80,9 @@ public class Fragment3_activity extends Fragment {
         Full_order= (TextView) view.findViewById(R.id.Full_order);
         Transaction_order= (TextView) view.findViewById(R.id.Transaction_order);
         evaluated= (TextView) view.findViewById(R.id.evaluated);
+        if(role.equals("2")){
+            evaluated.setVisibility(View.INVISIBLE);
+        }
         address= (ImageView) view.findViewById(R.id.address);
         write_information= (ImageView) view.findViewById(R.id.write_information);
         Exit_logon= (Button) view.findViewById(R.id.Exit_logon);

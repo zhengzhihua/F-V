@@ -51,26 +51,44 @@ public class Dealorderform_adapter extends RecyclerView.Adapter<Dealorderform_ad
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Map map=list.get(position);
-        if(roles.equals("1")){
-            holder.changebutton.setText("收货");
-             set="status='订单完成',number='1'";
-            message="已收货";
 
-        }else if(roles.equals("2")){
-            holder.changebutton.setText("出货");
-             set="status='已出货'";
-            message="已出货";
-        }
         holder.imageView.setImageBitmap(bitmap((String) map.get("image")));
         holder.shoptext.setText((String) map.get("shopname"));
         holder.pricetext.setText((String) map.get("price"));
         holder.businesstext.setText((String) map.get("username"));
         holder.statustext.setText((String) map.get("status"));
+        if(roles.equals("1")&&map.get("status").equals("已出货")){
+            holder.changebutton.setText("收货");
+            set="status='订单完成',number='1'";
+            message="已收货";
+            onclick(holder,map);
+
+        }else if(roles.equals("1")&&map.get("status").equals("已下单")){
+            holder.changebutton.setText("");
+            holder.changebutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mcontext,"未发货",Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        else if(roles.equals("2")&&map.get("status").equals("已下单")){
+            holder.changebutton.setText("出货");
+            set="status='已出货'";
+            message="已出货";
+            onclick(holder,map);
+        }else if(roles.equals("2")&&map.get("status").equals("已出货")){
+            holder.changebutton.setText("代收货");
+        }
+
+
+    }
+    private void onclick(ViewHolder holder,final Map map){
         holder.changebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                 String  where="orderformid='"+map.get("orderformid")+"'";
+                String  where="orderformid='"+map.get("orderformid")+"'";
                 Httpmanager.updata(mcontext, "orderform",set,where, new HttpRequestHandler<String>() {
                     @Override
                     public void onSuccess(String data) {
@@ -92,12 +110,11 @@ public class Dealorderform_adapter extends RecyclerView.Adapter<Dealorderform_ad
 
                     }
                 });
-                Intent intent=new Intent(mcontext,Main_activity.class);
+               /* Intent intent=new Intent(mcontext,Main_activity.class);
                 intent.putExtra("id","1");
-                mcontext.startActivity(intent);
+                mcontext.startActivity(intent);*/
             }
         });
-
     }
 
 

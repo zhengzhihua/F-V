@@ -3,16 +3,20 @@ package com.example.administrator.vaf.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
 import com.example.administrator.vaf.activity.Addshopdetail_activity;
@@ -33,6 +37,7 @@ public class Fragment2_activity extends Fragment {
     private Button addbutton,deletebutton;
     private String username,role,phone,qq,name,gender,userid;
     private RecyclerView recyclerViews;
+    private SwipeRefreshLayout swiperefreshlayout;
     private LinearLayoutManager layoutManagers;
     private ArrayList<Map<String, Object>> data,data1,data2;
     Context con;
@@ -61,6 +66,7 @@ public class Fragment2_activity extends Fragment {
     private void initview(View view) {
         addbutton= (Button) view.findViewById(R.id.addbutton);
         deletebutton= (Button) view.findViewById(R.id.deletebutton);
+        swiperefreshlayout= (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout1);
         deletebutton.setVisibility(View.INVISIBLE);
         recyclerViews= (RecyclerView) view.findViewById(R.id.recycleviews2);
         layoutManagers = new LinearLayoutManager(getActivity());   //++++++++++++++++++++++++++此处可能存在获取上下文
@@ -73,8 +79,33 @@ public class Fragment2_activity extends Fragment {
             addbutton.setVisibility(View.VISIBLE);
             initdata2();
         }
-
-
+        //设置下拉进度条的背景颜色，默认白色
+        swiperefreshlayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
+        //设置刷新圆圈的颜色，四种颜色变换
+        swiperefreshlayout.setColorSchemeResources(R.color.progress1,R.color.progress2,R.color.holo_blue_light,R.color.holo_red_light);
+        //刷新圆圈距离顶部的距离；
+        swiperefreshlayout.setProgressViewOffset(false, 0, (int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
+                        .getDisplayMetrics()));
+        swiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (role.equals("1")) {
+                          /*  addbutton.setVisibility(View.INVISIBLE);*/
+                            initdata1();
+                        } else if (role.equals("2")) {
+                           /* addbutton.setVisibility(View.VISIBLE);*/
+                            initdata2();
+                        }
+                        swiperefreshlayout.setRefreshing(false);
+                        Toast.makeText(con, "更新完成", Toast.LENGTH_SHORT).show();
+                    }
+                }, 600);
+            }
+        });
         addbutton.setOnClickListener(addbuttonlistener);
         deletebutton.setOnClickListener(deletebuttonlistener);
 

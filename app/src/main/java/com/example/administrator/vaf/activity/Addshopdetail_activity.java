@@ -1,6 +1,8 @@
 package com.example.administrator.vaf.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -12,6 +14,8 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -43,8 +47,7 @@ public class Addshopdetail_activity extends AppCompatActivity{
 
     public static final int Cut_PHOTO = 1;
     public static final int SHOW_PHOTO = 2;
-    public static final int PHOTO_ALBUM = 3;
-    public static final int SHOW_PHOTO_ALBUM = 4;
+
     private Uri imageUri;
     private Uri uri;
     private Bitmap bitmap;
@@ -52,10 +55,10 @@ public class Addshopdetail_activity extends AppCompatActivity{
     private EditText shopnametext;
     private EditText detailtext;
     private EditText pricetext,typetext,placeforproduce1text;
-    private Button buttoncommit1,makeimage;
+    private Button buttoncommit1,makeimage,selectiamge;
     String userid,username,shopid,shopname,shopdescribe,price,type,produceplace,images;
-
-
+    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE2 = 7;
+    private static final int REQUEST_CODE_PICK_IMAGE=3;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
@@ -96,44 +99,91 @@ public class Addshopdetail_activity extends AppCompatActivity{
         typetext= (EditText) findViewById(R.id.shoptype1);
         placeforproduce1text= (EditText) findViewById(R.id.placeforproduce1);
         buttoncommit1= (Button) findViewById(R.id.buttoncommit1);
-
+        selectiamge= (Button) findViewById(R.id.btn_photo1);
+        selectiamge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choosePhone(v);
+            }
+        });
         makeimage= (Button) findViewById(R.id.btn_photo);
         makeimage.setOnClickListener(makeimagelistener);
         buttoncommit1.setOnClickListener(buttoncommit1listener);
 
 
+
 }
+    public void choosePhone(View view){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_CALL_PHONE2);
+
+        }else {
+            choosePhoto();
+        }
+    }
+    /**
+     * 从相册选取图片
+     */
+    void choosePhoto(){
+        /**
+         * 打开选择图片的界面
+         */
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");//相片类型
+        startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
+
+    }
+
     View.OnClickListener buttoncommit1listener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             getdata();
-            String word="(userid,username,shopid,shopname,shopdescribe,price,type,produceplace,image)";
-            String value="('"+userid+"','"+username+"','"+shopid+"','"+shopname+"','"+shopdescribe+"','"+price+"','"+type+"','"+produceplace+"','"+images+"')";
-            Httpmanager.insertdata(Addshopdetail_activity.this,shopname,username,"commodity_bank",word,value, new HttpRequestHandler<String>() {
-                @Override
-                public void onSuccess(String data) {
-                    Toast.makeText(Addshopdetail_activity.this,"添加成功",Toast.LENGTH_LONG).show();
+            if(images.equals("")){
+                Toast.makeText(Addshopdetail_activity.this,"未上传图片",Toast.LENGTH_LONG).show();
+            }else if(shopname.equals("")){
+                Toast.makeText(Addshopdetail_activity.this,"未输入商品名",Toast.LENGTH_LONG).show();
+            }else if(price.equals("")){
+                Toast.makeText(Addshopdetail_activity.this,"未输入价格",Toast.LENGTH_LONG).show();
+            } else if(type.equals("")){
+                Toast.makeText(Addshopdetail_activity.this,"未输入类型",Toast.LENGTH_LONG).show();
+            }else if(produceplace.equals("")){
+                Toast.makeText(Addshopdetail_activity.this,"未输入产地",Toast.LENGTH_LONG).show();
+            }else {
 
-                }
+                getdata();
+                String word = "(userid,username,shopid,shopname,shopdescribe,price,type,produceplace,image)";
+                String value = "('" + userid + "','" + username + "','" + shopid + "','" + shopname + "','" + shopdescribe + "','" + price + "','" + type + "','" + produceplace + "','" + images + "')";
+                Httpmanager.insertdata(Addshopdetail_activity.this, shopname, username, "commodity_bank", word, value, new HttpRequestHandler<String>() {
+                    @Override
+                    public void onSuccess(String data) {
+                        Toast.makeText(Addshopdetail_activity.this, "添加成功", Toast.LENGTH_LONG).show();
 
-                @Override
-                public void onSuccesss(ArrayList<Map<String, Object>> res) {
+                    }
 
-                }
+                    @Override
+                    public void onSuccesss(ArrayList<Map<String, Object>> res) {
 
-                @Override
-                public void onSuccess(String data, int totalPages, int currentPage) {
+                    }
 
-                }
+                    @Override
+                    public void onSuccess(String data, int totalPages, int currentPage) {
 
-                @Override
-                public void onFailure(String error) {
+                    }
 
-                }
-            });
-            Intent intent=new Intent(Addshopdetail_activity.this,Main_activity.class);
+                    @Override
+                    public void onFailure(String error) {
+
+                    }
+                });
+            /*Intent intent=new Intent(Addshopdetail_activity.this,Main_activity.class);
             intent.putExtra("id","1");
-            startActivity(intent);
+            startActivity(intent);*/
+            }
         }
     };
     View.OnClickListener makeimagelistener=new View.OnClickListener() {
@@ -182,10 +232,53 @@ public class Addshopdetail_activity extends AppCompatActivity{
                     }
                 }
                 break;
+            /**
+             * 从相册中选取图片的请求标志
+             */
 
+            case REQUEST_CODE_PICK_IMAGE:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        /**
+                         * 该uri是上一个Activity返回的
+                         */
+                        Uri uri = data.getData();
+                        bitmap= BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                        imageViews.setImageBitmap(bitmap);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.d("tag",e.getMessage());
+                        Toast.makeText(this,"程序崩溃",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Log.i("liang", "失败");
+                }
+
+                break;
             default:
                 break;
         }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+    {
+
+
+
+
+        if (requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE2)
+        {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                choosePhoto();
+            } else
+            {
+                // Permission Denied
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 }

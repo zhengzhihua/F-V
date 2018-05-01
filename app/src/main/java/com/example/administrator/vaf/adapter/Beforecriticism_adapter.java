@@ -66,7 +66,7 @@ public class Beforecriticism_adapter extends RecyclerView.Adapter<Beforecriticis
                 Httpmanager.insertdata(contexts, "", "", "criticism",word ,value,new HttpRequestHandler<String>() {
                     @Override
                     public void onSuccess(String data) {
-
+                        Toast.makeText(contexts,"已放弃评论",Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -89,7 +89,7 @@ public class Beforecriticism_adapter extends RecyclerView.Adapter<Beforecriticis
                 Httpmanager.updata(contexts, "orderform", sets, wheres, new HttpRequestHandler<String>() {
                     @Override
                     public void onSuccess(String data) {
-                        Toast.makeText(contexts,data,Toast.LENGTH_LONG).show();
+                        Toast.makeText(contexts,"已放弃评论",Toast.LENGTH_LONG).show();
                     }
 
                     @Override

@@ -22,8 +22,10 @@ import cz.msebera.android.httpclient.Header;
 
  public class Httpmanager {
     private static final String TAG = "Httpmanager";
-    private static String uri="http://10.3.105.29:8080/excelservice/rest/service";
+      private static String uri="http://10.3.104.129:8080/excelservice/rest/service";
+ //   private static String uri="http://10.3.105.29:8080/excelservice/rest/service";
  //   private static String uri="http://192.168.42.90:8080/excelservice/rest/service";
+  //  private static String uri="http://192.168.43.160:8080/excelservice/rest/service";
 
 
     /*

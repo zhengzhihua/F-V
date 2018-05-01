@@ -34,7 +34,7 @@ public class Perfectuser_activity extends AppCompatActivity {
         setContentView(R.layout.activity_perfectuser);
         getdata();
         initview();
-        showdata();
+
 
     }
 
@@ -51,7 +51,7 @@ public class Perfectuser_activity extends AppCompatActivity {
         gendertext.setText(gender);
         phonetext.setText(phone);
         qqtext.setText(qq);
-        roletext.setText(name);
+        roletext.setText(role);
 
     }
 
@@ -81,7 +81,7 @@ public class Perfectuser_activity extends AppCompatActivity {
         phonetext= (EditText) findViewById(R.id.phonenumtexts);
         qqtext= (EditText) findViewById(R.id.qqtexts);
         roletext= (EditText) findViewById(R.id.roletexts);
-        gettextdata();
+        showdata();
         saveuser.setOnClickListener(saveuserlistener);
 
     }

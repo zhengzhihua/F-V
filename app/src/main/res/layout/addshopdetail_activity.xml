@@ -12,7 +12,12 @@
             android:layout_height="wrap_content"
             android:text="点击拍照"
             android:layout_weight="1"/>
-
+        <Button
+            android:id="@+id/btn_photo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择图片"
+            android:layout_weight="1"/>
 
     </LinearLayout>
     <RelativeLayout
@@ -38,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/addimage"/>
+            android:src="@drawable/addimage"
+            android:scaleType="fitXY"/>
 
     </RelativeLayout>
 
@@ -177,7 +183,7 @@
                     android:id="@+id/shoptype1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="请输入数据"
+                    android:hint="蔬菜还是水果"
                     android:textSize="18dp"
                     android:gravity="center_vertical"
                     android:textColor="@color/wordcolor"

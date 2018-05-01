@@ -84,8 +84,8 @@ public class Fragment2_adapter extends RecyclerView.Adapter<Fragment2_adapter.Vi
                 //invoking delete interface
 
                 if(roles.equals("2")){
-                    tablenames="orderform";
-                     where="orderformid='"+map.get("orderformid")+"'";
+                    tablenames="commodity_bank";
+                     where="shopid='"+map.get("shopid")+"'";
                 }else if(roles.equals("1")){
                     where="shopcarid='"+map.get("shopcarid")+"'";
                     tablenames="shopcar";
