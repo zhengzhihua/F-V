@@ -29,6 +29,7 @@
         <activity android:name=".activity.Criticism_detail" />
         <activity android:name=".activity.Dealorderform_activity" />
         <activity android:name=".activity.Shopdetail_activity" />
+        <activity android:name=".activity.Orderformdetail_activity" />
     </application>
 
 </manifest>

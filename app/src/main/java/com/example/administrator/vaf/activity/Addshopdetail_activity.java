@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
@@ -34,7 +36,9 @@ import com.example.administrator.vaf.design.UUIDGenerator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -51,12 +55,13 @@ public class Addshopdetail_activity extends AppCompatActivity{
     private Uri imageUri;
     private Uri uri;
     private Bitmap bitmap;
+    private RadioButton shucai,shuiguo;
     private ImageView imageViews;
     private EditText shopnametext;
     private EditText detailtext;
-    private EditText pricetext,typetext,placeforproduce1text;
+    private EditText pricetext,typetext,placeforproduce1text,primaryprice;
     private Button buttoncommit1,makeimage,selectiamge;
-    String userid,username,shopid,shopname,shopdescribe,price,type,produceplace,images;
+    private String userid,username,shopid,shopname,shopdescribe,price,type,produceplace,images,primarypricetext;
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE2 = 7;
     private static final int REQUEST_CODE_PICK_IMAGE=3;
 
@@ -84,7 +89,15 @@ public class Addshopdetail_activity extends AppCompatActivity{
         shopname=shopnametext.getText().toString();
         shopdescribe=detailtext.getText().toString();
         price=pricetext.getText().toString();
-        type=typetext.getText().toString();
+        primarypricetext=primaryprice.getText().toString();
+        if(primarypricetext.equals("")){
+            primarypricetext=price;
+        }
+        if(shucai.isChecked()){
+            type="蔬菜";
+        }else if(shuiguo.isChecked()){
+            type="水果";
+        }
         produceplace=placeforproduce1text.getText().toString();
     }
 
@@ -96,7 +109,9 @@ public class Addshopdetail_activity extends AppCompatActivity{
         shopnametext= (EditText) findViewById(R.id.shopname1);
         detailtext= (EditText)findViewById(R.id.detailforshop1);
         pricetext= (EditText) findViewById(R.id.price1);
-        typetext= (EditText) findViewById(R.id.shoptype1);
+        primaryprice= (EditText) findViewById(R.id.primaryprice);
+        shucai= (RadioButton) findViewById(R.id.shucai);
+        shuiguo= (RadioButton) findViewById(R.id.shuiguo);
         placeforproduce1text= (EditText) findViewById(R.id.placeforproduce1);
         buttoncommit1= (Button) findViewById(R.id.buttoncommit1);
         selectiamge= (Button) findViewById(R.id.btn_photo1);
@@ -156,12 +171,21 @@ public class Addshopdetail_activity extends AppCompatActivity{
             }else {
 
                 getdata();
-                String word = "(userid,username,shopid,shopname,shopdescribe,price,type,produceplace,image)";
-                String value = "('" + userid + "','" + username + "','" + shopid + "','" + shopname + "','" + shopdescribe + "','" + price + "','" + type + "','" + produceplace + "','" + images + "')";
+                Date date=new Date();
+                String dates=new SimpleDateFormat("yyyy-MM-dd").format(date);
+                String word = "(userid,username,shopid,shopname,shopdescribe,price,type,produceplace,image,uploadtime,primaryprice)";
+                String value = "('" + userid + "','" + username + "','" + shopid + "','" + shopname + "','" + shopdescribe + "','" + price + "','" + type + "','" + produceplace + "','" + images + "','"+dates+"','"+primarypricetext+"')";
                 Httpmanager.insertdata(Addshopdetail_activity.this, shopname, username, "commodity_bank", word, value, new HttpRequestHandler<String>() {
                     @Override
                     public void onSuccess(String data) {
                         Toast.makeText(Addshopdetail_activity.this, "添加成功", Toast.LENGTH_LONG).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Addshopdetail_activity.this.setResult(2);
+                                Addshopdetail_activity.this.finish();
+                            }
+                        },200);
 
                     }
 

@@ -41,9 +41,9 @@ public class Allorderform_activity extends AppCompatActivity{
         String role=bun.getString("role");
         Log.e(TAG,  role);
         if(role.equals("1")){
-            where="clientid='"+bun.getString("userid")+"'";
-        }else if(role.equals("2")&&role=="2"){
-            where="userid='"+bun.getString("userid")+"'";
+            where="clientid='"+bun.getString("userid")+"'and status='订单完成'";
+        }else if(role.equals("2")){
+            where="userid='"+bun.getString("userid")+"' and status='订单完成'";
         }
         getdata();
         recyclerView= (RecyclerView) findViewById(R.id.recycleview2);

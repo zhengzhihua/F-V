@@ -19,10 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
@@ -30,7 +33,9 @@ import com.example.administrator.vaf.adapter.Shophomeadapter;
 import com.example.administrator.vaf.api.HttpRequestHandler;
 import com.example.administrator.vaf.api.Httpmanager;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,10 +47,11 @@ import java.util.Map;
  * Created by Administrator on 2017/12/27.
  */
 
-public class Fragment1_activity extends Fragment implements AdapterView.OnItemClickListener{
+public class Fragment1_activity extends Fragment {
+      /*  implements AdapterView.OnItemClickListener{*/  //用于Gridview中的每一项监听
     private static final String TAG ="Fragment1_activity";
     private EditText exploreframe;
-    private ImageView exploreimage;
+    private ImageView exploreimage,fruit,vagetable,anyone,nowtimes,bargainprice;
     private SwipeRefreshLayout swipeRefreshLayout;
     private LinearLayoutManager linearLayoutManager;
     private SwipeRefreshLayout swiperefreshlayout;
@@ -58,9 +64,10 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
     private  String wheres="";
     private GridView gridView;
     private List<Map<String,Object>> dataList;
-    private int[] icon={R.drawable.fruit,R.drawable.vegetable,R.drawable.anyone};
+    private String Name;
+   /* private int[] icon={R.drawable.fruit,R.drawable.vegetable,R.drawable.anyone};
     private String[] iconName={"水果","蔬菜","全部"};
-    private SimpleAdapter adapter;
+    private SimpleAdapter adapter;*/
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,24 +88,98 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment1_activity,container,false);
          con=view.getContext();
+        initview1(view);
         initview(view);
+
         return view;
     }
 
+    private void initview1(View view){
+        List<String> list = new ArrayList<String>();
+        list.add("商品");
+        list.add("商家");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(con, android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //      adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        //      adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
+        //     adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        Spinner sp = (Spinner)view.findViewById(R.id.spinner);
+        sp.setAdapter(adapter);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            // parent： 为控件Spinner view：显示文字的TextView position：下拉选项的位置从0开始
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+   //             TextView tvResult = (TextView)view.findViewById(R.id.Result);
+//获取Spinner控件的适配器
+                ArrayAdapter<String> adapter = (ArrayAdapter<String>) parent.getAdapter();
+    //            tvResult.setText(adapter.getItem(position));
+                if(adapter.getItem(position).equals("商品")){
+                    Name="shopname";
+                }else if(adapter.getItem(position).equals("商家")){
+                    Name="username";
+                }
+            }
+            //没有选中时的处理
+            public void onNothingSelected(AdapterView<?> parent) {
+                Name="shopname";
+            }
+        });
+    }
     private void initview(View view) {
         exploreframe= (EditText) view.findViewById(R.id.write_explore);
         exploreimage= (ImageView) view.findViewById(R.id.explore_button);
-        gridView=(GridView)view.findViewById(R.id.gridView);
+        fruit= (ImageView) view.findViewById(R.id.fruittext);
+        vagetable= (ImageView) view.findViewById(R.id.vagetabletext);
+        anyone= (ImageView) view.findViewById(R.id.anyonetext);
+        nowtimes= (ImageView) view.findViewById(R.id.nowtimetext);
+        bargainprice= (ImageView) view.findViewById(R.id.bargainprice);
+        fruit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wheres="type='水果'";
+                initdata();
+            }
+        });
+        vagetable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wheres="type='蔬菜'";
+                initdata();
+            }
+        });
+        anyone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wheres="";
+                initdata();
+            }
+        });
+        nowtimes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                wheres="uploadtime='"+data+"'";
+                initdata();
+            }
+        });
+        bargainprice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wheres="price<primaryprice";
+                initdata();
+            }
+        });
+      /*  gridView=(GridView)view.findViewById(R.id.gridView);*/
         swiperefreshlayout= (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         recycleview= (RecyclerView) view.findViewById(R.id.recycleview1);
 /*
         1.准备数据源； 2.新建适配器； 3.GridView加载适配器；4.GridView配置事件监听器
          */
-        dataList=new ArrayList<>();
+       /* dataList=new ArrayList<>();
         adapter=new SimpleAdapter(con,getData(),R.layout.item,new String[]{"image","text"},
                 new int[]{R.id.image,R.id.text});
         gridView.setAdapter(adapter);
-        gridView.setOnItemClickListener(this);
+        gridView.setOnItemClickListener(this);*/
         linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false);   //++++++++++++++++++++++++++此处可能存在获取上下文
 
         recycleview.setLayoutManager(linearLayoutManager);
@@ -148,7 +229,7 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
         });
 
     }
-    private List<Map<String,Object>> getData(){
+   /* private List<Map<String,Object>> getData(){
         for(int i=0;i<icon.length;i++){
             Map<String,Object>map=new HashMap<>();
             map.put("image",icon[i]);
@@ -157,7 +238,7 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
         }
         return dataList;
     }
-
+*/
     private void initdata() {
         String where=wheres;
         String word="shopid,shopname,shopdescribe,username,userid,price,type,produceplace,image";
@@ -240,7 +321,7 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
            String startstr=exploreframetext.substring(0,1);
            String finalstr=exploreframetext.substring(exploreframetext.length()-1,exploreframetext.length()); //获取字符串最后一个字符
        //    String finalstr=exploreframetext.substring(-1);     //第二种方法获取字符串最后一个字符
-           String where="shopname like'%"+startstr+"%'or shopname like'"+finalstr+"'";
+           String where=Name+" like'%"+startstr+"%'or shopname like'"+finalstr+"'";
 
 
         String word="shopid,shopname,shopdescribe,username,userid,price,type,produceplace,image";
@@ -281,7 +362,7 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
     }
 };
 
-    @Override
+  /*  @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(con,"我是"+iconName[position],Toast.LENGTH_SHORT).show();
        if(iconName[position].equals("水果")){
@@ -295,5 +376,5 @@ public class Fragment1_activity extends Fragment implements AdapterView.OnItemCl
            wheres="";
            initdata();
        }
-    }
+    }*/
 }

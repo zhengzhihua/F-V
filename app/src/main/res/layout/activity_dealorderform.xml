@@ -133,14 +133,29 @@
                     android:textSize="@dimen/dealword"/>
             </LinearLayout>
                 </LinearLayout>
-                <Button
-                    android:id="@+id/changestatus5"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true">
+                    <Button
+                    android:id="@+id/changestatus5"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="待发货"
                     android:textColor="@color/wordcolor"
-                    android:layout_alignParentRight="true"
                     />
+                    <Button
+                       android:id="@+id/chexiao"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="撤销订单"
+                        android:textColor="@color/wordcolor"
+                        />
+                </LinearLayout>
+
             </RelativeLayout>
         </LinearLayout>
 

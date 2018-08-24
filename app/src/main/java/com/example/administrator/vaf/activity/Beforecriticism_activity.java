@@ -75,7 +75,11 @@ public class Beforecriticism_activity extends AppCompatActivity{
 
 
     }
-
+   @Override
+   protected void onResume(){
+       super.onResume();
+       getdata();
+   }
     private void getdata() {
         String word="orderformid,orderdetail,username,shopid,shopname,userid,status,image,price,clientname,clientid,number";
         String where=userid+"='"+ userids+"'and number='1'and status='订单完成'";
@@ -91,6 +95,7 @@ public class Beforecriticism_activity extends AppCompatActivity{
                     lists=res;
                     Beforecriticism_adapter beforecriticism_adapter=new Beforecriticism_adapter(Beforecriticism_activity.this,lists,role);
                     recyclerView.setAdapter(beforecriticism_adapter);
+
                 }else{
                     Toast.makeText(Beforecriticism_activity.this,"暂无数据",Toast.LENGTH_LONG).show();
                 }

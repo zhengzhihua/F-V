@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2017/12/20.
+ * Created by zhengzhihua on 2018/2/25.
  */
 
 public interface HttpRequestHandler <E> {

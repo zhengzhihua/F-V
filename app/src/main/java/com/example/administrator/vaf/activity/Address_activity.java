@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
@@ -26,7 +27,8 @@ public class Address_activity extends AppCompatActivity{
     private static final String TAG = "Address_activity";
     private Button addbutton2;
     private EditText adressinput1;
-    String userid,addressinputword,adressid,word,value;
+    private TextView shouhuo;
+    private String userid,addressinputword,adressid,word,value,role;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class Address_activity extends AppCompatActivity{
         Intent in=getIntent();
         Bundle bu=in.getExtras();
         userid=bu.getString("userid");
+        role=bu.getString("role");
 
         initview();
 
@@ -41,6 +44,10 @@ public class Address_activity extends AppCompatActivity{
 
     private void initview() {
         addbutton2= (Button) findViewById(R.id.addbutton2);
+        shouhuo= (TextView) findViewById(R.id.shouhuodizhi);
+        if(role.equals("2")){
+            shouhuo.setText("商铺地址");
+        }
         adressinput1= (EditText) findViewById(R.id.adressinput1);
         getdata();
 

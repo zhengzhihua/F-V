@@ -8,7 +8,7 @@
     <dimen name="height_40dp">40dp</dimen>
     <dimen name="marginLeft_80dp">80dp</dimen>
     <dimen name="marginLeft_20dp">20dp</dimen>
-    <dimen name="marginTop_80dp">80dp</dimen>
+    <dimen name="marginTop_80dp">60dp</dimen>
     <dimen name="loginbutton_200dp">200dp</dimen>
     <dimen name="marginRight_5dp">5dp</dimen>
     <dimen name="marginTop_15dp">15dp</dimen>

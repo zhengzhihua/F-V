@@ -3,6 +3,7 @@ package com.example.administrator.vaf.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.administrator.vaf.R;
 import com.example.administrator.vaf.activity.Main_activity;
+import com.example.administrator.vaf.activity.Orderformdetail_activity;
 import com.example.administrator.vaf.activity.Perfectuser_activity;
 import com.example.administrator.vaf.api.HttpRequestHandler;
 import com.example.administrator.vaf.api.Httpmanager;
@@ -55,6 +57,27 @@ public class Allorderform_adapter extends RecyclerView.Adapter<Allorderform_adap
         holder.shoptext.setText((String) map.get("shopname"));
         holder.pricetext.setText((String) map.get("price"));
         holder.businesstext.setText((String) map.get("username"));   //=====================================================================================
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("username", (String) map.get("username"));
+                bundle.putString("userid", (String) map.get("userid"));
+                bundle.putString("shopname", (String) map.get("shopname"));
+                bundle.putString("status", (String) map.get("status"));
+                bundle.putString("clientname", (String) map.get("clientname"));
+                bundle.putString("clientid", (String) map.get("clientid"));
+                bundle.putString("adressdetail", (String) map.get("adressdetail"));
+                bundle.putString("startdatetime", (String) map.get("startdatetime"));
+                bundle.putString("finishtime", (String) map.get("finishtime"));
+                bundle.putString("totalmoney", (String) map.get("totalmoney"));
+                bundle.putString("price", (String) map.get("price"));
+                Intent intent=new Intent(contexts, Orderformdetail_activity.class);
+                intent.putExtras(bundle);
+                contexts.startActivity(intent);
+
+            }
+        });
         holder.deletebutton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

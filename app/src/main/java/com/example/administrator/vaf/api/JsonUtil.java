@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2018/3/20.
+ * Created by zhengzhihua on 2018/3/1.
  */
 
 public class JsonUtil {
@@ -25,10 +25,10 @@ public class JsonUtil {
         try {
             JSONObject json = new JSONObject(data);
             String message=json.getString("message");
-            Object object=json.getString("object");
+           /* Object object=json.getString("object");*/
             String success=json.getString("success");
             result.setMessage(message);
-            result.setObject(object);
+           /* result.setObject(object);*/
             result.setSuccess(success);
             return result;
 

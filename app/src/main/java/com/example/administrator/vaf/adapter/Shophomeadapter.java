@@ -77,6 +77,7 @@ public class Shophomeadapter extends RecyclerView.Adapter<Shophomeadapter.ViewHo
                 bundle.putString("userids",clientids);
                 bundle.putString("usernames",clientname);
                 bundle.putString("role",roles);
+                bundle.putString("primaryprice", (String) map.get("primaryprice"));
 
                 Intent intent=new Intent(contexts,Shopdetail_activity.class);
                 intent.putExtras(bundle);
@@ -105,9 +106,9 @@ public class Shophomeadapter extends RecyclerView.Adapter<Shophomeadapter.ViewHo
 
         public ViewHolder(View view) {
             super(view);
-            cardView= (CardView) view.findViewById(R.id.card_container);
+            cardView= (CardView) view.findViewById(R.id.card_container1);
             imageView = (ImageView) view.findViewById(R.id.images1);
-            shoptext = (TextView) view.findViewById(R.id.shops);
+            shoptext = (TextView) view.findViewById(R.id.shops1);
             pricetext = (TextView) view.findViewById(R.id.prices1);
             businesstext = (TextView) view.findViewById(R.id.business1);
         }

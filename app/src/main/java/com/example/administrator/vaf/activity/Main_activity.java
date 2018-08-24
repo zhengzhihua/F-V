@@ -44,7 +44,7 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
 
         findViewById();
         if(role.equals("2")){
-            imageView.setImageResource(R.drawable.addition);
+            imageView.setImageResource(R.drawable.shopmanager1);
         }else if(role.equals("1")){
             imageView.setImageResource(R.drawable.shoppingcarone);
         }
@@ -179,7 +179,7 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
    //         fragments();
             imageview();
             if(role.equals("2")){
-                imageView.setImageResource(R.drawable.addition_fill);
+                imageView.setImageResource(R.drawable.shoppingmanager);
             }else if(role.equals("1")){
                 imageView.setImageResource(R.drawable.publish_goods_fill);
             }
@@ -196,7 +196,7 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
   private void imageview(){
       homeimage.setImageResource(R.drawable.homeone);
       if(role.equals("2")){
-          imageView.setImageResource(R.drawable.addition);
+          imageView.setImageResource(R.drawable.shopmanager1);
       }else if(role.equals("1")){
           imageView.setImageResource(R.drawable.shoppingcarone);
       }
@@ -209,6 +209,16 @@ public class Main_activity extends AppCompatActivity implements View.OnClickList
         transaction.remove(shoppingfragment);
         transaction.remove(homefragement);
         transaction.commit();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode == 2){
+            // 在这设置选中你要显示的fragment
+            transaction.show(shoppingfragment);   //显示要显示的fragment；
+
+            transaction.commit();
+        }
     }
 
 }

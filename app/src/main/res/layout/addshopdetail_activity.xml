@@ -43,7 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/addimage"
             android:scaleType="fitXY"/>
 
     </RelativeLayout>
@@ -85,6 +84,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="请输入数据"
+                      android:background="@null"
                       android:textSize="18dp"
                       android:gravity="center_vertical"
                       android:textColor="@color/wordcolor"
@@ -120,6 +120,7 @@
                     android:textColor="@color/wordcolor"
                     android:gravity="center_vertical"
                     android:textSize="18dp"
+                    android:background="@null"
                     android:hint="请输入数据"
                     />
 
@@ -148,14 +149,51 @@
                     android:text=":"/>
                 <EditText
                     android:id="@+id/price1"
-                    android:layout_width="match_parent"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:hint="请输入数据"
+                    android:hint="输入"
                     android:textSize="18dp"
-                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/wordcolor"
                     />
 
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="/斤"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/wordcolor"
+                    android:text="原价"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/wordcolor"
+                    android:text=":"/>
+                <EditText
+                    android:id="@+id/primaryprice"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:hint="输入"
+                    android:textSize="18dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:textColor="@color/wordcolor"
+                    />
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="/斤"
+                    android:textSize="20dp"
+
+                     />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -179,16 +217,23 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/wordcolor"
                     android:text=":"/>
-                <EditText
-                    android:id="@+id/shoptype1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="蔬菜还是水果"
-                    android:textSize="18dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/wordcolor"
-                    />
 
+                <RadioButton
+                    android:id="@+id/shucai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="蔬菜"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="18dp"
+                    android:textColor="@color/wordblack"/>
+                <RadioButton
+                    android:id="@+id/shuiguo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="水果"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18dp"
+                    android:textColor="@color/wordblack"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -221,6 +266,7 @@
                     android:layout_height="wrap_content"
                     android:hint="请输入数据"
                     android:textSize="18dp"
+                    android:background="@null"
                     android:gravity="center_vertical"
                     android:textColor="@color/wordcolor"
                     />

@@ -94,13 +94,14 @@ public class Criticism_detail extends AppCompatActivity{
 
                     }
                 });
-                Intent intent=new Intent(Criticism_detail.this,Beforecriticism_activity.class);
+                /*Intent intent=new Intent(Criticism_detail.this,Beforecriticism_activity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("role",role);
                 bundle.putString("userid",userids);
                 intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
+                startActivity(intent);*/
+                Criticism_detail.this.finish();
+             //   finish();
             }
         });
     }

@@ -125,7 +125,7 @@ public class Login_activity extends AppCompatActivity {
             public void onSuccesss(ArrayList<Map<String, Object>> res) {
 
 
-                if(res!=null&& !res.equals("")){
+                if(res.size()!=0){
                     editor=pref.edit();
                     if(checkbox.isChecked()){       //检查复选框是否被选中
                         editor.putBoolean("remember_password",true);
@@ -137,7 +137,10 @@ public class Login_activity extends AppCompatActivity {
                     }
                     editor.apply();
                     ArrayList<Map<String, Object>> map=new ArrayList<Map<String,Object>>();
+
                     map =  res;
+                    if(!map.equals(""))
+                    {
                     role= (String) map.get(0).get("role");
                     phone= (String) map.get(0).get("phone");
                     qq= (String) map.get(0).get("qq");
@@ -157,6 +160,10 @@ public class Login_activity extends AppCompatActivity {
                     Intent intent=new Intent(Login_activity.this,Main_activity.class);
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    } else{
+                        Toast.makeText(Login_activity.this,"用户名或密码错误",Toast.LENGTH_LONG).show();}
+                }else{
+                    Toast.makeText(Login_activity.this,"用户名或密码错误",Toast.LENGTH_LONG).show();
                 }
             }
 

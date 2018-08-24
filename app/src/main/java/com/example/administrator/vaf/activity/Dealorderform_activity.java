@@ -92,6 +92,7 @@ public class Dealorderform_activity extends AppCompatActivity{
                     lists=res;
                     Dealorderform_adapter dealorderform_adapter=new Dealorderform_adapter(Dealorderform_activity.this,lists,role);
                     recyclerView.setAdapter(dealorderform_adapter);
+                    dealorderform_adapter.notifyDataSetChanged();
                 }else{
                     Toast.makeText(Dealorderform_activity.this,"暂无数据",Toast.LENGTH_LONG).show();
                 }

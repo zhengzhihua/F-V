@@ -20,6 +20,7 @@ import com.example.administrator.vaf.activity.Address_activity;
 import com.example.administrator.vaf.activity.Allorderform_activity;
 import com.example.administrator.vaf.activity.Beforecriticism_activity;
 import com.example.administrator.vaf.activity.Dealorderform_activity;
+import com.example.administrator.vaf.activity.Login_activity;
 import com.example.administrator.vaf.activity.Main_activity;
 import com.example.administrator.vaf.activity.Perfectuser_activity;
 import com.example.administrator.vaf.activity.Shopdetail_activity;
@@ -73,6 +74,12 @@ public class Fragment3_activity extends Fragment {
         return view;
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if(!hidden){
+            getdata();
+        }
+    }
     private void initview(View view) {
         userinformation= (LinearLayout) view.findViewById(R.id.user);
         users= (TextView) view.findViewById(R.id.users);
@@ -100,9 +107,11 @@ public class Fragment3_activity extends Fragment {
     View.OnClickListener Exit_logonlistener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addCategory(Intent.CATEGORY_HOME);
+//            Intent intent = new Intent(Intent.ACTION_MAIN);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.addCategory(Intent.CATEGORY_HOME);
+//            startActivity(intent);
+            Intent intent=new Intent(getActivity(), Login_activity.class);
             startActivity(intent);
         }
     };

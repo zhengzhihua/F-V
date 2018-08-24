@@ -2,6 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,18 +38,76 @@
 
     </RelativeLayout>
     </LinearLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleviews2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        >
 
-    </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleviews2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/querendingdan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:background="@color/progress3"
+                android:id="@+id/dingdanbutton"
+                android:text="确认下单"
+                android:textSize="@dimen/Wordsize_24dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总价"
+                    android:textSize="20dp"
+                    android:textColor="@color/wordblack"
+                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    />
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="0.0"
+                    android:textSize="16dp"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/totalmoney"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>
